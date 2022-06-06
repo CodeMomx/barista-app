@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+    <title>21 Savage Fan Site</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/e6755d1f3b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-header text-center mb-3">
+      <h1 class="mb-5 ">Barista baybee</h1>
+  </div>
+
+  <div class="col-md-6">
+    <h2>Pending Orders</h2>
+    <h1><%= user.local.email %></h1>
+    <% for (let i = 0; i < orders.length; i++) {%>
+      <section id="<%=orders[i]._id%>">
+        <span>#<%=i+1%></span>
+        <h3><%=orders[i].name%></h3>
+        <h4><%=orders[i].drink%></h4>
+        <span><%=orders[i].size%></span>
+        <span><%=orders[i].temperature%></span>
+        <span><%=orders[i].milk%></span>
+        <span><%=orders[i].flavors%></span>
+        <span><%=orders[i].completed%></span>
+        <span><i class="fa-solid fa-circle-check"></i></span>
+        <span><i class="fa fa-ban" aria-hidden="true"></i></span>
+      </section>
+    <%}%>
+  </div>
+
+
+    <% if (user.local.email) { %>
+        <p>
+            <strong>id</strong>: <%= user._id %><br>
+            <strong>email</strong>: <%= user.local.email %><br>
+            <strong>password</strong>: <%= user.local.password %>
+        </p>
+      <div>
+        <a href="/unlink/local" class="btn btn-default">Unlink</a>
+        <a href="/logout" class="btn btn-default">Logout</a>
+      </div>
+    <% } else { %>
+      <div>
+        <a href="/connect/local" class="btn btn-default">Connect Local</a>
+        <a href="/logout" class="btn btn-default">Logout</a>
+      </div>
+    <% } %>
+</div>
+
+<div class="col-md-6">
+  <h2>finished Orders</h2>
+  <% for (let i = 0; i < done.length; i++) {%>
+    <section id="<%=done[i]._id%>">
+      <span>#<%=i+1%></span>
+      <h3><%=done[i].name%></h3>
+      <h4><%=done[i].drink%></h4>
+      <span><%=done[i].size%></span>
+      <span><%=done[i].temperature%></span>
+      <span><%=done[i].milk%></span>
+      <span><%=done[i].flavors%></span>
+      <span><%=done[i].completed%></span>
+      <span><i class="fa-solid fa-circle-check"></i></span>
+      <span><i class="fa fa-ban" aria-hidden="true"></i></span>
+    </section>
+  <%}%>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+<script src="main.js"></script>
+
+</body>
+</html>
